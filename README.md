@@ -36,6 +36,8 @@ Once installed, it can be used in a template as simply as:
 </scroll-sync>
 ```
 
+[Demo and Code Example](https://metawin-m.github.io/vue-scroll-sync)
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
