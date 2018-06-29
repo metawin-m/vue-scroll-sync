@@ -1,6 +1,6 @@
 {
   "name": "vue-scroll-sync",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Vue.js component that syncronize containers scroll positions",
   "main": "dist/vue-scroll-sync.js",
   "scripts": {
