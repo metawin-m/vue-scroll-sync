@@ -38,6 +38,25 @@ Once installed, it can be used in a template as simply as:
 
 [Demo and Code Example](https://metawin-m.github.io/vue-scroll-sync)
 
+## SSR
+
+Create the `plugins/vue-scroll-sync.js` :
+
+```javascript
+import Vue from 'vue'
+import ScrollSync from 'vue-scroll-sync'
+
+Vue.component('scroll-sync', ScrollSync)
+```
+
+Include plugin in your `nuxt.config.js` file:
+
+```javascript
+module.exports = {
+  plugins: ['~plugins/vue-scroll-sync']
+}
+```
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
