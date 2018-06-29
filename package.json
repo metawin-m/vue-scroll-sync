@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rimraf ./dist && webpack --config ./webpack.config.js",
     "storybook:run": "start-storybook -p 9001 -c .storybook",
-    "storybook:build": "build-storybook -c .storybook -o .out"
+    "storybook:build": "build-storybook -c .storybook -o docs"
   },
   "author": "Metawin Metaveevinij",
   "license": "MIT",
