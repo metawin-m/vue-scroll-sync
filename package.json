@@ -4,11 +4,17 @@
   "description": "A Vue.js component that syncronize containers scroll positions",
   "main": "dist/vue-scroll-sync.js",
   "scripts": {
-    "build": "rimraf ./dist && webpack --config ./webpack.config.js"
+    "build": "rimraf ./dist && webpack --config ./webpack.config.js",
+    "storybook:run": "start-storybook -p 9001 -c .storybook",
+    "storybook:build": "build-storybook -c .storybook -o .out"
   },
   "author": "Metawin Metaveevinij",
   "license": "MIT",
   "devDependencies": {
+    "@storybook/addon-knobs": "^3.4.8",
+    "@storybook/addon-storysource": "^3.4.8",
+    "@storybook/addon-viewport": "^3.4.8",
+    "@storybook/vue": "^3.4.8",
     "babel-core": "^6.10.4",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-runtime": "^6.9.0",

@@ -13,7 +13,7 @@ npm i --save vue-scroll-sync
 Include the script file, then install the component with `Vue.use(ScrollSync);` e.g.:
 
 ```html
-<script type="text/javascript" src="node_modules/vuejs/dist/vue.min.js"></script>
+<script type="text/javascript" src="node_modules/vue/dist/vue.min.js"></script>
 <script type="text/javascript" src="node_modules/vue-scroll-sync/dist/scroll-sync.min.js"></script>
 <script type="text/javascript">
   Vue.use(ScrollSync);

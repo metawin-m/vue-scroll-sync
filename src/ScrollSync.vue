@@ -5,7 +5,7 @@
 </template>
 
 <script>
-let uuid = 0 // https://github.com/vuejs/vue/issues/5886
+let uuid = 0 // from https://github.com/vuejs/vue/issues/5886
 
 export default {
     props: {
@@ -98,6 +98,8 @@ export default {
 <style scoped>
 .container {
     width:100%;
-    overflow-y:scroll;
+    height:100%;
+    overflow:auto;
+    position: relative;
 }
 </style>

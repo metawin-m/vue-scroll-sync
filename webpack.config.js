@@ -14,7 +14,7 @@ var config = {
           test: /\.js$/,
           loader: 'babel',
           include: __dirname,
-          exclude: /node_modules/
+          exclude: /(node_modules|.storybook|stories)/
         },
         {
           test: /\.vue$/,
