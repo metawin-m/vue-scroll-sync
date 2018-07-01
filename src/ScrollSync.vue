@@ -40,7 +40,9 @@ export default {
                 clientHeight,
                 scrollLeft,
                 scrollWidth,
-                clientWidth
+                clientWidth,
+                barHeight,
+                barWidth
             } = data
 
             // from https://github.com/okonet/react-scroll-sync
@@ -54,10 +56,10 @@ export default {
             const paneWidth = vue.$el.scrollWidth - clientWidth
             /* Adjust the scrollTop position of it accordingly */
             vue.$el.onscroll = null
-            if (vertical && scrollTopOffset > 0) {
+            if (vertical && scrollTopOffset > barHeight) {
             vue.$el.scrollTop = proportional ? (paneHeight * scrollTop) / scrollTopOffset : scrollTop // eslint-disable-line
             }
-            if (horizontal && scrollLeftOffset > 0) {
+            if (horizontal && scrollLeftOffset > barWidth) {
             vue.$el.scrollLeft = proportional ? (paneWidth * scrollLeft) / scrollLeftOffset : scrollLeft // eslint-disable-line
             }
             window.requestAnimationFrame(() => {
@@ -76,7 +78,9 @@ export default {
                     clientHeight,
                     scrollLeft,
                     scrollWidth,
-                    clientWidth
+                    clientWidth,
+                    offsetHeight,
+                    offsetWidth
                 } = e.target
 
                 this.topNode.$emit('scroll-sync', {
@@ -86,6 +90,8 @@ export default {
                     scrollLeft,
                     scrollWidth,
                     clientWidth,
+                    barHeight: offsetHeight - clientHeight,
+                    barWidth: offsetWidth - clientWidth,
                     emitter: vue.uuid,
                     group: vue.group
                 })
