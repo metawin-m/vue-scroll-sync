@@ -3,7 +3,6 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const path = require('path')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 var config = {
@@ -14,27 +13,21 @@ var config = {
     module: {
       rules: [
         {
-          test: /\.vue$/,
-          loader: 'vue-loader',
-          exclude: /(node_modules|.storybook|stories|docs)/
-        },
-        {
           test: /\.js$/,
           loader: 'babel-loader',
           exclude: /(node_modules|.storybook|stories|docs)/
         },
         {
+          test: /\.vue$/,
+          loader: 'vue-loader',
+          exclude: /(node_modules|.storybook|stories|docs)/
+        },
+        {
           test: /\.css$/,
-          use: [
-            'vue-style-loader',
-            'css-loader'
-          ]
+          loader: 'style!less!css'
         }
       ]
     },
-    plugins: [
-      new VueLoaderPlugin()
-    ],
     optimization: {
       minimizer: [
         new UglifyJsPlugin({

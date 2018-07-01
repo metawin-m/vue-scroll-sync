@@ -30,7 +30,7 @@ storiesOf('Vertical Scroll Sync', module)
                     <div style="width:100px;height:${leftHeight}px;background:${bg};" />
                 </scroll-sync>
                 <scroll-sync vertical style="${containerStyle}">
-                    <div style="width:$100px;height:${rightHeight}px;background:${bg};" />
+                    <div style="width:100px;height:${rightHeight}px;background:${bg};" />
                 </scroll-sync>
             </div>
         `})
@@ -53,7 +53,7 @@ storiesOf('Vertical Scroll Sync', module)
                     <div style="width:100px;height:${leftHeight}px;background:${bg};" />
                 </scroll-sync>
                 <scroll-sync proportional vertical style="${containerStyle}">
-                    <div style="width:$100px;height:${rightHeight}px;background:${bg};" />
+                    <div style="width:100px;height:${rightHeight}px;background:${bg};" />
                 </scroll-sync>
             </div>
         `})

@@ -4,6 +4,7 @@ import Vue from 'vue';
 
 // Import your custom components.
 import ScrollSync from '../src/ScrollSync.vue';
+// import ScrollSync from '../dist/scroll-sync'
 
 // Register custom components.
 Vue.component('scroll-sync', ScrollSync);
