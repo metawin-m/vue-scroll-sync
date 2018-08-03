@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="scroll-sync-container">
         <slot></slot>
     </div>
 </template>
@@ -102,7 +102,7 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.scroll-sync-container {
     width:100%;
     height:100%;
     overflow:auto;
