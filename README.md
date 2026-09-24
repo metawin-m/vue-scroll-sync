@@ -1,6 +1,6 @@
 # vue-scroll-sync
 
-A Vue component that syncronize containers scroll positions
+A Vue component that synchronizes the scroll positions of containers
 
 ## Installation
 
@@ -35,6 +35,26 @@ Once installed, it can be used in a template as simply as:
     Content
 </scroll-sync>
 ```
+
+Scrolling one container scrolls the others in the same `group`:
+
+```html
+<scroll-sync vertical proportional group="editor">
+    Content
+</scroll-sync>
+<scroll-sync vertical proportional group="editor">
+    Longer content
+</scroll-sync>
+```
+
+### Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `vertical` | Boolean | `false` | Sync the vertical scroll position |
+| `horizontal` | Boolean | `false` | Sync the horizontal scroll position |
+| `proportional` | Boolean | `false` | Scroll by the same percentage instead of the same number of pixels, for content of different sizes |
+| `group` | String | none | Only sync with containers in the same group |
 
 [Demo and Code Example](https://metawin-m.github.io/vue-scroll-sync)
 

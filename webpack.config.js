@@ -24,7 +24,7 @@ var config = {
         },
         {
           test: /\.css$/,
-          loader: 'style!less!css'
+          use: ['vue-style-loader', 'css-loader']
         }
       ]
     },

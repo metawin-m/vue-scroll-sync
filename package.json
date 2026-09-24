@@ -1,7 +1,7 @@
 {
   "name": "vue-scroll-sync",
   "version": "1.0.5",
-  "description": "A Vue.js component that syncronize containers scroll positions",
+  "description": "A Vue.js component that synchronizes the scroll positions of containers",
   "main": "dist/scroll-sync.js",
   "scripts": {
     "build": "rimraf ./dist && webpack --config ./webpack.config.js",
@@ -14,6 +14,9 @@
   },
   "author": "Metawin Metaveevinij <metawin.m@gmail.com>",
   "license": "MIT",
+  "peerDependencies": {
+    "vue": "^2.2.1"
+  },
   "devDependencies": {
     "@storybook/addon-knobs": "^3.4.8",
     "@storybook/addon-storysource": "^3.4.8",

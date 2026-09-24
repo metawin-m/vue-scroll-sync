@@ -14,23 +14,22 @@ export default {
         horizontal: Boolean,
         group: String
     },
-    data() {
-        return {
-            topNode: null
-        }
-    },
     beforeCreate() {
         this.uuid = uuid.toString();
         uuid += 1;
     },
     mounted() {
-        const vue = this
-        let parent = this.$parent
-        while (parent) {
-            this.topNode = parent
-            parent = this.topNode.$parent
-        }
-        this.topNode.$on('scroll-sync', function (data) {
+        this.topNode = this.$root
+        this.topNode.$on('scroll-sync', this.handleSync)
+        this.$el.onscroll = this.handleScroll
+    },
+    beforeDestroy() {
+        this.topNode.$off('scroll-sync', this.handleSync)
+        this.$el.onscroll = null
+    },
+    methods: {
+        handleSync: function (data) {
+            const vue = this
             if (data.emitter === vue.uuid || data.group !== vue.group) {
                 return
             }
@@ -52,26 +51,28 @@ export default {
             const { proportional, vertical, horizontal } = vue
 
             /* Calculate the actual pane height */
-            const paneHeight = vue.$el.scrollHeight - clientHeight
-            const paneWidth = vue.$el.scrollWidth - clientWidth
+            const paneHeight = vue.$el.scrollHeight - vue.$el.clientHeight
+            const paneWidth = vue.$el.scrollWidth - vue.$el.clientWidth
             /* Adjust the scrollTop position of it accordingly */
             vue.$el.onscroll = null
             if (vertical && scrollTopOffset > barHeight) {
-            vue.$el.scrollTop = proportional ? (paneHeight * scrollTop) / scrollTopOffset : scrollTop // eslint-disable-line
+                vue.$el.scrollTop = proportional ? (paneHeight * scrollTop) / scrollTopOffset : scrollTop
             }
             if (horizontal && scrollLeftOffset > barWidth) {
-            vue.$el.scrollLeft = proportional ? (paneWidth * scrollLeft) / scrollLeftOffset : scrollLeft // eslint-disable-line
+                vue.$el.scrollLeft = proportional ? (paneWidth * scrollLeft) / scrollLeftOffset : scrollLeft
             }
             window.requestAnimationFrame(() => {
-                vue.$el.onscroll = vue.handleScroll
+                if (!vue._isDestroyed) {
+                    vue.$el.onscroll = vue.handleScroll
+                }
             })
-        })
-        this.$el.onscroll = this.handleScroll
-    },
-    methods: {
+        },
         handleScroll: function(e) {
             const vue = this
             window.requestAnimationFrame(() => {
+                if (vue._isDestroyed) {
+                    return
+                }
                 const {
                     scrollTop,
                     scrollHeight,
@@ -83,7 +84,7 @@ export default {
                     offsetWidth
                 } = e.target
 
-                this.topNode.$emit('scroll-sync', {
+                vue.topNode.$emit('scroll-sync', {
                     scrollTop,
                     scrollHeight,
                     clientHeight,
